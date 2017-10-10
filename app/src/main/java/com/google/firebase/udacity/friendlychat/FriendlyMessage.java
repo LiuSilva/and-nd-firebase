@@ -21,6 +21,7 @@ public class FriendlyMessage {
     private String name;
     private String photoUrl;
 
+    // necessário para o Firebase realtime database
     public FriendlyMessage() {
     }
 
