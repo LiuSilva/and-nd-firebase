@@ -190,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     // quando o usuario cancelar o login e voltar da o loop se nao tiver isso
@@ -199,9 +198,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Logado", Toast.LENGTH_SHORT).show();
-            } else if (requestCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Deslogado", Toast.LENGTH_SHORT).show();
+                // Sign-in succeeded, set up the UI
+                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                // Sign in was canceled by the user, finish the activity
+                Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
@@ -215,8 +216,8 @@ public class MainActivity extends AppCompatActivity {
         if (mAuthStateListener != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
         }
-        detachDatabaseReadListener();
         mMessageAdapter.clear();
+        detachDatabaseReadListener();
     }
 
     @Override
@@ -224,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
-
 
     private void onSignedInInitialize(String username) {
         mUsername = username;
