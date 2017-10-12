@@ -44,6 +44,11 @@ dependencies {
 
     // Realtime database
     compile 'com.google.firebase:firebase-database:11.4.2'
+
+    // aauthentication
+    compile 'com.google.firebase:firebase-auth:11.4.2'
+    compile 'com.firebaseui:firebase-ui-auth:3.0.0'
+
 }
 
 // firebase need it
